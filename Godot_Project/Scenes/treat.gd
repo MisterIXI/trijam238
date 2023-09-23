@@ -1,4 +1,6 @@
-extends StaticBody2D
+extends Area2D
+
+@export var scroll_speed = 1
 
 signal collected
 
@@ -9,11 +11,12 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _process(_delta):
+	position.x -= scroll_speed
 
 
-func _on_area_2d_body_entered(body:Node2D):
+
+func _on_body_entered(_body:Node2D):
 	print("collected")
 	collected.emit()
 	queue_free()
