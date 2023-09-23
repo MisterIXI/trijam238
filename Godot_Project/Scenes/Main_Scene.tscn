@@ -7,4 +7,6 @@
 [node name="MainCharacter" parent="." instance=ExtResource("1_wgpvt")]
 
 [node name="MainCharacter2" parent="." instance=ExtResource("1_wgpvt")]
-position = Vector2(124.03, 0)
+position = Vector2(420, 311)
+scale = Vector2(2, 2)
+skew = 0.47822
