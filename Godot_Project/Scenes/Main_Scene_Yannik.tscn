@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://cucui167kgmro"]
+
+[ext_resource type="Script" path="res://Scenes/Doggo.cs" id="1_jjtto"]
+[ext_resource type="Texture2D" uid="uid://cvgq31kh42tb6" path="res://icon.svg" id="2_y4vbi"]
+[ext_resource type="Script" path="res://Scripts/RopeNode.cs" id="3_s7xmw"]
+[ext_resource type="Script" path="res://Scripts/RopeSegment.cs" id="4_tmqr1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5c4ui"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dr8q2"]
+blend_mode = 1
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Doggo" type="CharacterBody2D" parent="."]
+position = Vector2(844.4, 397)
+motion_mode = 1
+script = ExtResource("1_jjtto")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doggo"]
+shape = SubResource("CircleShape2D_5c4ui")
+
+[node name="Sprite2D" type="Sprite2D" parent="Doggo"]
+material = SubResource("CanvasItemMaterial_dr8q2")
+texture = ExtResource("2_y4vbi")
+
+[node name="Target" type="CharacterBody2D" parent="."]
+position = Vector2(280, 396)
+motion_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Target"]
+shape = SubResource("CircleShape2D_5c4ui")
+
+[node name="Sprite2D" type="Sprite2D" parent="Target"]
+texture = ExtResource("2_y4vbi")
+
+[node name="RopeNode" type="Node2D" parent="."]
+script = ExtResource("3_s7xmw")
+_startSegmentCount = 100
+_segmentLength = 5.0
+_startNode = NodePath("../Doggo")
+_endNode = NodePath("../Target")
+_gravity = Vector2(-100, 0)
+
+[node name="Line2D" type="Line2D" parent="RopeNode"]
+position = Vector2(34, -21)
+points = PackedVector2Array(0, 0, 17.58, 0, 4.47, -25.45)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(29, -22)
+script = ExtResource("4_tmqr1")
