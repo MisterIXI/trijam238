@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cc0cds5jmdsq1"]
+
+[ext_resource type="Texture2D" uid="uid://cvgq31kh42tb6" path="res://icon.svg" id="1_fqc7p"]
+[ext_resource type="Script" path="res://Scenes/treat.gd" id="1_tvlim"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bu7pa"]
+blend_mode = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w4x4h"]
+size = Vector2(100, 100)
+
+[node name="Treat" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_tvlim")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_bu7pa")
+texture = ExtResource("1_fqc7p")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_w4x4h")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

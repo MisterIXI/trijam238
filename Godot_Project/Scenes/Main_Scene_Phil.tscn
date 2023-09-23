@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://bq6huje2rd4ml"]
+
+[ext_resource type="PackedScene" uid="uid://c5qwlkgpifoi0" path="res://Scenes/player.tscn" id="1_ljtrs"]
+[ext_resource type="PackedScene" uid="uid://d1cddci3t7fpl" path="res://Scenes/obstacle.tscn" id="2_6u6mg"]
+[ext_resource type="PackedScene" uid="uid://cc0cds5jmdsq1" path="res://Scenes/treat.tscn" id="3_8pbv0"]
+[ext_resource type="PackedScene" uid="uid://df0ewdebrw5ls" path="res://Scenes/user_interface.tscn" id="4_rajkx"]
+
+[node name="Node2D" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_ljtrs")]
+
+[node name="Obstacle" parent="." instance=ExtResource("2_6u6mg")]
+position = Vector2(1175, 259)
+
+[node name="Treat" parent="." instance=ExtResource("3_8pbv0")]
+position = Vector2(521, 230)
+
+[node name="UserInterface" parent="." instance=ExtResource("4_rajkx")]

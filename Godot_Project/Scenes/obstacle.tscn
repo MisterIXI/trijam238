@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1cddci3t7fpl"]
+
+[ext_resource type="Texture2D" uid="uid://cvgq31kh42tb6" path="res://icon.svg" id="1_bxfno"]
+[ext_resource type="Script" path="res://Scenes/obstacle.gd" id="1_ckeat"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6x4t"]
+size = Vector2(100, 100)
+
+[node name="Obstacle" type="StaticBody2D"]
+script = ExtResource("1_ckeat")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_p6x4t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bxfno")
+flip_v = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-70, -70, 140, 140)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
