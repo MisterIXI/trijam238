@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://bciqst4vvtjo3"
+=======
+uid="uid://cp67w24on8tc7"
+>>>>>>> 0342bad2c1a6cba7925cdb33e5f92a71d280cba5
 path="res://.godot/imported/ButtonLong_Pixel_Hover.png-795ab75bd431ff718d58d812dc50f525.ctex"
 metadata={
 "vram_texture": false
