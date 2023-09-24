@@ -4,13 +4,6 @@ extends Node2D
 @export var treat_scene: PackedScene
 
 
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 
 func _on_obstacle_timer_timeout():

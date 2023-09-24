@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c4h41k8ufkpbg"
+path="res://.godot/imported/Minigame - Parasail (The Legend of Zelda Breath of the Wild OST).mp3-06dc1ae8007b00f881e69c12ef2cc815.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Minigame - Parasail (The Legend of Zelda Breath of the Wild OST).mp3"
+dest_files=["res://.godot/imported/Minigame - Parasail (The Legend of Zelda Breath of the Wild OST).mp3-06dc1ae8007b00f881e69c12ef2cc815.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

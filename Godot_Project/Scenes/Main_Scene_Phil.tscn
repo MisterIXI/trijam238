@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bq6huje2rd4ml"]
+[gd_scene load_steps=8 format=3 uid="uid://bq6huje2rd4ml"]
 
 [ext_resource type="PackedScene" uid="uid://c5qwlkgpifoi0" path="res://Scenes/player.tscn" id="1_ljtrs"]
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_umuu7"]
 [ext_resource type="PackedScene" uid="uid://d1cddci3t7fpl" path="res://Scenes/obstacle.tscn" id="2_6u6mg"]
 [ext_resource type="PackedScene" uid="uid://cc0cds5jmdsq1" path="res://Scenes/treat.tscn" id="3_8pbv0"]
 [ext_resource type="PackedScene" uid="uid://df0ewdebrw5ls" path="res://Scenes/user_interface.tscn" id="4_rajkx"]
+[ext_resource type="AudioStream" uid="uid://c4h41k8ufkpbg" path="res://Sounds/Minigame - Parasail (The Legend of Zelda Breath of the Wild OST).mp3" id="6_bpbkc"]
 
 [sub_resource type="Curve2D" id="Curve2D_tk3b3"]
 _data = {
@@ -21,8 +22,6 @@ treat_scene = ExtResource("3_8pbv0")
 [node name="Player" parent="." instance=ExtResource("1_ljtrs")]
 position = Vector2(300, 324)
 
-[node name="UserInterface" parent="." instance=ExtResource("4_rajkx")]
-
 [node name="TreatTimer" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
@@ -36,6 +35,13 @@ curve = SubResource("Curve2D_tk3b3")
 
 [node name="SpawnPath" type="PathFollow2D" parent="SpawnBounds"]
 position = Vector2(1280, 64)
+
+[node name="UserInterface" parent="." instance=ExtResource("4_rajkx")]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_bpbkc")
+volume_db = -16.0
+autoplay = true
 
 [connection signal="timeout" from="TreatTimer" to="." method="_on_treat_timer_timeout"]
 [connection signal="timeout" from="ObstacleTimer" to="." method="_on_obstacle_timer_timeout"]
