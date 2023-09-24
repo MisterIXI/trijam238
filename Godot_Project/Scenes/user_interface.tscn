@@ -24,3 +24,4 @@ script = ExtResource("1_4nqk8")
 
 [node name="EatSFX" type="AudioStreamPlayer" parent="ScoreLabel"]
 stream = ExtResource("2_lu4ns")
+volume_db = -12.0

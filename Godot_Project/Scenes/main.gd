@@ -5,7 +5,6 @@ extends Node2D
 
 
 
-
 func _on_obstacle_timer_timeout():
 	var obstacle = obstacle_scene.instantiate()
 	obstacle_scene.instantiate()
@@ -30,3 +29,11 @@ func _on_treat_timer_timeout():
 	add_child(treat)
 
 	treat.collected.connect($UserInterface/ScoreLabel._on_collected.bind())
+
+func _on_pause_button_pressed():
+	if get_tree().paused == false:
+		get_tree().paused = true
+		$PauseMenu.show()
+	else:
+		get_tree().paused = false
+		$PauseMenu.hide()
