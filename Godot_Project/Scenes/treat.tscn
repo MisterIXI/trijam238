@@ -1,10 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://cc0cds5jmdsq1"]
 
-[ext_resource type="Texture2D" uid="uid://cvgq31kh42tb6" path="res://icon.svg" id="1_fqc7p"]
 [ext_resource type="Script" path="res://Scenes/treat.gd" id="1_tvlim"]
+[ext_resource type="Texture2D" uid="uid://cbriyuorssrxe" path="res://Textures/Collectable.png" id="2_kr8o3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w4x4h"]
-size = Vector2(100, 100)
+size = Vector2(70, 60)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bu7pa"]
 blend_mode = 1
@@ -19,7 +19,7 @@ shape = SubResource("RectangleShape2D_w4x4h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_bu7pa")
-texture = ExtResource("1_fqc7p")
+texture = ExtResource("2_kr8o3")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 rect = Rect2(-70, -70, 140, 140)

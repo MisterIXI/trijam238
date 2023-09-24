@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://df0ewdebrw5ls"]
+[gd_scene load_steps=3 format=3 uid="uid://df0ewdebrw5ls"]
 
 [ext_resource type="Script" path="res://Scenes/Label.gd" id="1_4nqk8"]
+[ext_resource type="AudioStream" uid="uid://dqplxvwug5606" path="res://Sounds/Eating sound effect LUCAS ARPON TV.mp3" id="2_lu4ns"]
 
 [node name="UserInterface" type="Control"]
 layout_mode = 3
@@ -20,3 +21,6 @@ scale = Vector2(1, 0.997793)
 theme_override_font_sizes/font_size = 30
 text = "Treats: 0"
 script = ExtResource("1_4nqk8")
+
+[node name="EatSFX" type="AudioStreamPlayer" parent="ScoreLabel"]
+stream = ExtResource("2_lu4ns")
