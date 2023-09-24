@@ -14,3 +14,14 @@ func _physics_process(_delta):
 	
 	get_input()
 	move_and_slide()
+
+func _process(_delta):
+	if velocity.x > 0:
+		$DogRun.flip_h = false
+		$AnimationPlayer.play("run", -1, 2.0, false)
+	elif velocity.x < 0:
+		$DogRun.flip_h = true
+		$AnimationPlayer.play("run", -1, 2.0, false)
+	else:
+		$DogRun.flip_h = false
+		$AnimationPlayer.play("run", -1, 1.0, false)

@@ -1,18 +1,67 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5qwlkgpifoi0"]
+[gd_scene load_steps=7 format=3 uid="uid://c5qwlkgpifoi0"]
 
 [ext_resource type="Script" path="res://Scenes/Player.gd" id="1_5nfe2"]
-[ext_resource type="Texture2D" uid="uid://cvgq31kh42tb6" path="res://icon.svg" id="2_u5o3b"]
+[ext_resource type="Texture2D" uid="uid://nymhlgbp2pm0" path="res://Textures/spritesheet(Running).png" id="2_1626v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p1qxr"]
-size = Vector2(100, 100)
+size = Vector2(73, 36)
+
+[sub_resource type="Animation" id="Animation_15y4e"]
+resource_name = "run"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DogRun:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_63d3y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DogRun:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5p28u"]
+_data = {
+"RESET": SubResource("Animation_63d3y"),
+"run": SubResource("Animation_15y4e")
+}
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_5nfe2")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_u5o3b")
+[node name="DogRun" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_1626v")
+hframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5.5, 32)
 shape = SubResource("RectangleShape2D_p1qxr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5p28u")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+anim_player = NodePath("../AnimationPlayer")

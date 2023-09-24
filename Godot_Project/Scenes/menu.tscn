@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://mceoeyigahv8"]
 
-[ext_resource type="Texture2D" uid="uid://duyngjrbo3ex1" path="res://Textures/ButtonLong_Pixel.png" id="1_03ta1"]
+[ext_resource type="Texture2D" uid="uid://pjik62xojj4f" path="res://Textures/ButtonLong_Pixel.png" id="1_03ta1"]
 [ext_resource type="Script" path="res://Scenes/menu.gd" id="1_oigtl"]
 [ext_resource type="AudioStream" uid="uid://iq6s11l2bxla" path="res://Sounds/Sneaky Adventure – Kevin MacLeod (No Copyright Music).mp3" id="2_jvs7i"]
 [ext_resource type="Texture2D" uid="uid://calylok67mahq" path="res://Textures/Smug_hat_kid.png" id="2_y1ku7"]
-[ext_resource type="Texture2D" uid="uid://cuctqxtscibvs" path="res://Textures/ButtonLong_Pixel_Pressed.png" id="3_yhwxb"]
-[ext_resource type="Texture2D" uid="uid://bciqst4vvtjo3" path="res://Textures/ButtonLong_Pixel_Hover.png" id="4_3601u"]
+[ext_resource type="Texture2D" uid="uid://cvlrtbn32drqp" path="res://Textures/ButtonLong_Pixel_Pressed.png" id="3_yhwxb"]
+[ext_resource type="Texture2D" uid="uid://xyiyw12qjfgr" path="res://Textures/ButtonLong_Pixel_Hover.png" id="4_3601u"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3

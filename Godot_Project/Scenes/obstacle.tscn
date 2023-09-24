@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://d1cddci3t7fpl"]
 
-[ext_resource type="Texture2D" uid="uid://cvgq31kh42tb6" path="res://icon.svg" id="1_bxfno"]
 [ext_resource type="Script" path="res://Scenes/obstacle.gd" id="1_ckeat"]
+[ext_resource type="Texture2D" uid="uid://xkbqr11fc1cc" path="res://Textures/Stone_Pixel.png" id="2_bmmeb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p6x4t"]
-size = Vector2(100, 100)
+size = Vector2(83, 44)
 
 [node name="Obstacle" type="StaticBody2D"]
 collision_layer = 2
@@ -12,10 +12,12 @@ collision_mask = 2
 script = ExtResource("1_ckeat")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 11)
 shape = SubResource("RectangleShape2D_p6x4t")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_bxfno")
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_bmmeb")
 flip_v = true
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
