@@ -1,0 +1,151 @@
+[gd_scene load_steps=15 format=3 uid="uid://b8unm8s6hhh6r"]
+
+[ext_resource type="PackedScene" uid="uid://c5qwlkgpifoi0" path="res://Scenes/player.tscn" id="1_ljtrs"]
+[ext_resource type="Script" path="res://Scenes/main.gd" id="1_umuu7"]
+[ext_resource type="PackedScene" uid="uid://d1cddci3t7fpl" path="res://Scenes/obstacle.tscn" id="2_6u6mg"]
+[ext_resource type="PackedScene" uid="uid://cc0cds5jmdsq1" path="res://Scenes/treat.tscn" id="3_8pbv0"]
+[ext_resource type="Texture2D" uid="uid://dompw8x4tf371" path="res://Textures/Background01_Layer2_pixel.png" id="4_01fbu"]
+[ext_resource type="Texture2D" uid="uid://b7c8sca2ru3l5" path="res://Textures/Background01.png" id="4_6pc0l"]
+[ext_resource type="Script" path="res://Scenes/ParallaxBackground.gd" id="4_pydg0"]
+[ext_resource type="PackedScene" uid="uid://df0ewdebrw5ls" path="res://Scenes/user_interface.tscn" id="4_rajkx"]
+[ext_resource type="Texture2D" uid="uid://bxe7i5lkr1isw" path="res://Textures/Background01_CloudsLayer_Pixel.png" id="5_refag"]
+[ext_resource type="AudioStream" uid="uid://c4h41k8ufkpbg" path="res://Sounds/Minigame - Parasail (The Legend of Zelda Breath of the Wild OST).mp3" id="6_bpbkc"]
+[ext_resource type="Texture2D" uid="uid://calylok67mahq" path="res://Textures/Smug_hat_kid.png" id="11_re3yq"]
+[ext_resource type="Script" path="res://Scripts/RopeNode.cs" id="12_yhq34"]
+
+[sub_resource type="Curve2D" id="Curve2D_tk3b3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1280, 320, 0, 0, 0, 0, 1408, 320, 0, 0, 0, 0, 1408, 576, 0, 0, 0, 0, 1280, 576, 0, 0, 0, 0, 1280, 320)
+}
+point_count = 5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2wiy"]
+size = Vector2(1152, 64)
+
+[node name="main" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_umuu7")
+obstacle_scene = ExtResource("2_6u6mg")
+treat_scene = ExtResource("3_8pbv0")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+offset = Vector2(500, 294.33)
+scale = Vector2(0.175, 0.175)
+transform = Transform2D(0.175, 0, 0, 0.175, 500, 294.33)
+scroll_offset = Vector2(100, 0)
+script = ExtResource("4_pydg0")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(3, 3)
+motion_mirroring = Vector2(8192, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_repeat = 2
+scale = Vector2(2, 1)
+texture = ExtResource("4_01fbu")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(4, 4)
+motion_mirroring = Vector2(8192, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture_repeat = 2
+position = Vector2(0, -600)
+scale = Vector2(1.825, 1.2)
+texture = ExtResource("5_refag")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(9.75, 9.75)
+motion_mirroring = Vector2(8192, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+texture_repeat = 2
+scale = Vector2(2, 1)
+texture = ExtResource("4_6pc0l")
+
+[node name="Player" parent="." instance=ExtResource("1_ljtrs")]
+position = Vector2(300, 324)
+collision_mask = 10
+
+[node name="TreatTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="ObstacleTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="SpawnBounds" type="Path2D" parent="."]
+curve = SubResource("Curve2D_tk3b3")
+
+[node name="SpawnPath" type="PathFollow2D" parent="SpawnBounds"]
+position = Vector2(1280, 320)
+
+[node name="UserInterface" parent="." instance=ExtResource("4_rajkx")]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_bpbkc")
+volume_db = -16.0
+autoplay = true
+
+[node name="PauseMenu" type="Control" parent="."]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 928.0
+offset_top = 104.0
+offset_right = 968.0
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PauseMenu"]
+z_index = 1
+layout_mode = 0
+offset_left = -336.0
+offset_top = -48.0
+offset_right = 16.0
+offset_bottom = 92.0
+theme_override_colors/font_color = Color(0.792157, 0.380392, 0.521569, 1)
+theme_override_font_sizes/font_size = 100
+text = "paused"
+
+[node name="PauseButton" type="Button" parent="."]
+process_mode = 3
+offset_left = 1120.0
+offset_top = 8.0
+offset_right = 1146.0
+offset_bottom = 39.0
+text = "||"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(576, 272)
+shape = SubResource("RectangleShape2D_c2wiy")
+
+[node name="SmugHatKid" type="Sprite2D" parent="."]
+position = Vector2(99, 338)
+scale = Vector2(0.0525, 0.153704)
+texture = ExtResource("11_re3yq")
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("12_yhq34")
+_startSegmentCount = 35
+_startNode = NodePath("../Player")
+_endNode = NodePath("../SmugHatKid")
+
+[node name="Line2D" type="Line2D" parent="Node2D"]
+
+[connection signal="timeout" from="TreatTimer" to="." method="_on_treat_timer_timeout"]
+[connection signal="timeout" from="ObstacleTimer" to="." method="_on_obstacle_timer_timeout"]
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
+
+[editable path="UserInterface"]
